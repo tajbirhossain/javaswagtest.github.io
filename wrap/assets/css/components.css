@@ -100,7 +100,7 @@
 .Header__Bottom ul li a,
 .Footer__Item ul li a,
 .Header__Info ul li a {
-  display: flex !important;
+  display: flex;
   align-items: center;
   font-size: 14px;
   padding: 4px 7px;

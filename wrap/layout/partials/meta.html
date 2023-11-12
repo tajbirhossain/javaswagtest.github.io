@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ if eq .Title .Site.Title }}
+  <title>{{ .Site.Title }}</title>
+{{ else }}
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+{{ end }}
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+<!-- <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/app.css"> -->
+<!-- <link rel="stylesheet" href="/css/app.css"> -->
+
+{{ $options := dict "inlineImports" true }}
+
+{{ $critical := resources.Get "/css/app.css" | resources.PostCSS $options | resources.ToCSS}}
+
+<style>{{ $critical.Content | safeCSS }}</style>
+
+
+<link rel="alternate" href="{{ .Site.BaseURL }}/index.xml" title="hugo-boilerplate-podcast" type="application/rss+xml">
+
+<!-- <meta name="author" content="{{ .Site.Params.Telegram}}"> -->
+<meta name="copyright" content="Copyright (c) Shogo Sensui; Licensed under Creative Commons Attribution-Noncommercial-Share Japan">
+
+
+{{ if .Params.Image}}
+
+  {{ $image := resources.Get .Params.Image }}
+
+  {{ with $image }}
+    <meta property="og:image" content="{{ .Permalink }}">
+    <meta property="og:image:width" content="{{ .Width }}"/>
+    <meta property="og:image:height" content="{{ .Height }}"/>
+    <meta name="twitter:image" content="{{ .Permalink }}">
+  {{ end }}
+  {{ else }}
+
+  {{ if .Site.Params.Image}}
+
+  {{ $image := resources.Get .Site.Params.Image }}
+
+  {{ with $image }}
+    <meta property="og:image" content="{{ .Permalink }}">
+    <meta property="og:image:width" content="{{ .Width }}"/>
+    <meta property="og:image:height" content="{{ .Height }}"/>
+    <meta name="twitter:image" content="{{ .Permalink }}">
+  {{ end }}
+
+  {{end}}
+
+{{end}}
+
+<!-- TWITTER -->
+
+{{ if .Params.Description }}
+  <meta property="og:description" content="{{ .Params.Description }}">
+  <meta property="twitter:description" content="{{ .Params.Description }}">
+{{ else }}
+  <meta property="og:description" content="{{ .Site.Params.summary }}">
+  <meta property="twitter:description" content="{{ .Site.Params.summary }}">
+{{ end }}
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ .Title }}">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary">
+<meta name=twitter:site content="@javaswagpodcast">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name=twitter:description content>
+
+

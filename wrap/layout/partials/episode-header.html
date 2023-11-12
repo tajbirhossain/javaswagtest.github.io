@@ -1,0 +1,49 @@
+<header class="Header Episode__Header">
+    <div class="Fixed__Width">
+        <div class="Header__Info">
+            <div class="Header__Info__Item Header__FirstItem">
+                <div class="Item__Left">
+                    <a href="{{ .Site.BaseURL }}" target="_blank">
+                    <img src="/img/javaswag.jpg" alt="javaswag logo">
+                    </a>
+                </div>
+                <div class="Item__Right">
+                    <h2>{{ .Site.Title }}</h2>
+                    <p>{{ .Site.Params.Desc }}</p>
+                </div>
+            </div>
+            <ul class="Header__Info__Item">
+                <li>
+                    <a href="{{ .Site.Params.itunes }}" target="_blank">
+                    <img src="/img/Apple Podcasts.png" alt="icon">
+                    <span>Apple</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ .Site.Params.android }}" target="_blank">
+                    <img src="/img/Google Podcasts.png" alt="icon">
+                    <span>Google</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ .Site.Params.spotify }}" target="_blank">
+                    <img src="/img/Spotify.png" alt="icon">
+                    <span>Spotify</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ .Site.Params.yandex }}" target="_blank">
+                    <img src="/img/yandex.png" alt="icon">
+                    <span>Яндекс</span>
+                    </a>
+                </li>
+                <li>
+                     <a href="{{ .Site.Params.feed }}" target="_blank">
+                    <img src="/img/RSS.png" alt="icon">
+                    <span>RSS</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
